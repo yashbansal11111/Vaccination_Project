@@ -1,0 +1,22 @@
+{% block content %}      
+
+<h1>Employee Details</h1>
+
+{% for emp in emp_details %}
+    <strong>Employee ID: {{ emp.employee_id }}</strong>
+    <ul>
+        <li>Name: {{  emp.name }}</li>
+        <li>Role: {{  emp.role }}</li>
+        <li>Passowrd: {{  emp.password }}</li>
+        <li>Email_id: {{  emp.email_id }}</li>
+        <li>Gender: {{  emp.gender }}</li>
+        <li>Age: {{  emp.age }}</li>
+        <li>contact_info: {{  emp.contact_info }}</li>
+    </ul>
+    <br>
+
+{% endfor %}
+
+{{ emp_details }}
+
+{% endblock %} 

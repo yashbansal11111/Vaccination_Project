@@ -1,0 +1,20 @@
+{% block content %}      
+
+<h1>Vaccination Details</h1>
+
+{% for vax in vax_details %}
+    <strong>Employee Name: {{ vax.employee }}</strong>
+    <ul>
+    <li>Employee_ID: {{  vax.employee_id }}</li>
+    <li>Vaccine Name: {{  vax.vaccine_name }}</li>
+    <li>First_Doze: {{  vax.first_doze }}</li>
+    <li>First_Doze_Date: {{  vax.first_doze_date }}</li>
+    <li>Second_Doze: {{  vax.second_doze }}</li>
+    <li>Second_Doze_Date: {{  vax.second_doze_date }}</li>
+    </ul>
+    <br>
+
+{% endfor %}
+{{ vax_details }}
+
+{% endblock %} 
