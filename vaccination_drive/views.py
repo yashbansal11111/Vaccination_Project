@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from vaccination_drive.models import User, VaccinationDetails
 #OR from .models import UserDetails, VaccinationDetails because our models.py is in same directory as views.py
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate,logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm
 
 
@@ -73,3 +73,11 @@ def AllVaccineDetail(request):
 def AllEmployeeDetail(request):
     emp_details=User.objects.all()
     return render(request, 'vaccination_drive/emp_details.html', context={'emp_details':emp_details})
+
+
+def home(request):
+    return render(request, 'vaccination_drive/home.html')
+    
+def logout(request):
+    auth_logout(request)
+    return render(request, 'vaccination_drive/logout.html')

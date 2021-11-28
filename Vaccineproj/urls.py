@@ -20,6 +20,6 @@ from django.contrib.auth import views
 urlpatterns = [
     path('vaccination_drive/', include('vaccination_drive.urls')),
     path('admin/', admin.site.urls),
-    path('login', views.LoginView.as_view(template_name='vaccination_drive/login.html',redirect_authenticated_user=True), name='login'),
-    path('logout', views.LogoutView.as_view(template_name='vaccination_drive/logout.html'), name='logout')
+    path('login', views.LoginView.as_view(template_name='vaccination_drive/login.html',redirect_authenticated_user=True), name='login')
+    #path('logout', views.LogoutView.as_view(template_name='vaccination_drive/logout.html'), name='logout')
 ]
