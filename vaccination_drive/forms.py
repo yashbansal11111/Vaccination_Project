@@ -1,10 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import date
 
-from vaccination_drive.models import UserDetails,VaccinationDetails
+from vaccination_drive.models import User,VaccinationDetails
 
 
 # Create your forms here.
@@ -55,20 +55,20 @@ class VaccineAddForm(forms.ModelForm):
 
 # TESTING A USER REGISTRATION FORM:
 
-class UserRegistrationForm(forms.ModelForm):
-    username=forms.CharField(max_length=50)
+class UserRegistrationForm(UserCreationForm):
+    #username=forms.CharField(max_length=50)
     name = forms.CharField(max_length=50)
-    email_id = forms.EmailField(required=True)
+    # #email_id = forms.EmailField(required=True)
     gender = forms.CharField(max_length=10)
     age = forms.IntegerField(validators=[MaxValueValidator(100),MinValueValidator(1)])
     contact_info = forms.IntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
     role = forms.CharField(max_length=20)
-    password = forms.CharField(label=("Password"),widget=forms.PasswordInput)   
-    password1 = forms.CharField(label=("Password confirmation"),widget=forms.PasswordInput,
-    help_text=("Enter the same password as above, for verification."))    
+    #password = forms.CharField(label=("Password"),widget=forms.PasswordInput)   
+    #password1 = forms.CharField(label=("Password confirmation"),widget=forms.PasswordInput,
+    #help_text=("Enter the same password as above, for verification."))    
     class Meta:
-        model = UserDetails
-        fields = ["name","username","email_id", "password","gender","age","contact_info","role"]
+        model = User
+        fields = ["name","username","email", "password1","password2","gender","age","contact_info","role"]
 
 
 #TESTING A VACCINE ADD INFO FORM:

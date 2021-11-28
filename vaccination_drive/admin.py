@@ -2,9 +2,14 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import UserDetails, VaccinationDetails
+from .models import User, VaccinationDetails
 
-admin.site.register(UserDetails)
+class UserAdmin(admin.ModelAdmin):
+    list_display=('username','age','role')
+    ordering=('username',)
+admin.site.register(User,UserAdmin)
 admin.site.register(VaccinationDetails) 
+
+
 
 #Both registrations should be done seperately !!

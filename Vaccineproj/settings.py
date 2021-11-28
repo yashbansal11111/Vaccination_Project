@@ -123,4 +123,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#LOGIN_REDIRECT_URL = 'addvaccine'
+LOGIN_REDIRECT_URL = '/vaccination_drive/'
+
+LOGOUT_REDIRECT_URL = '/'
+
+AUTH_USER_MODEL='vaccination_drive.User'
