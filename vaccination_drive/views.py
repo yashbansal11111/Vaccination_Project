@@ -52,18 +52,25 @@ def sample(request):
 
 @login_required  
 def VaccinationPage(request):
-    if request.method == "POST":
-        form = AddVaccineForm(request.POST)
-        if form.is_valid():
-            u = form.save(commit=False)
-            u.employee_id = request.user.id
-            u.save()
-            messages.success(request, " Vaccine Registration successful." )
-            #return redirect("vaccination_drive:login")
-        messages.error(request, "Unsuccessful Vaccine registration. Try Again.")
-    form = AddVaccineForm()
-    return render (request=request, template_name="vaccination_drive/vaccine_add.html", context={"form":form})
-   
+    user_id=request.user.id
+    user_role=request.user.role
+    is_admin=True if user_role=="Admin" else False
+    vacc_detail=VaccinationDetails.objects.filter(employee=user_id).values()
+    if not vacc_detail:
+        if request.method == "POST":
+            form = AddVaccineForm(request.POST)
+            if form.is_valid():
+                u = form.save(commit=False)
+                u.employee_id = request.user.id
+                u.save()
+                messages.success(request, " Vaccine Registration successful." )
+                return redirect("vaccination_drive:addvaccine")
+            messages.error(request, "Unsuccessful Vaccine registration. Try Again.")
+        form = AddVaccineForm()
+        return render (request=request, template_name="vaccination_drive/vaccine_add.html", context={"form":form,"admin":is_admin})
+    else:
+        return render(request, "vaccination_drive/empvax_details.html", context={"empvax_details":vacc_detail,"admin":is_admin} )
+
 @login_required
 def AllVaccineDetail(request):
     vax_details=VaccinationDetails.objects.all()

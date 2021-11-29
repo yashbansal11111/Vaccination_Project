@@ -1,0 +1,21 @@
+{% block content %}      
+
+<h1>Employee Vaccine Details</h1>
+
+{% for empvax in empvax_details %}
+    <ul>
+    <li>Employee_ID: {{ empvax.employee_id }}</li>
+    <li>Vaccine Name: {{ empvax.vaccine_name }}</li>
+    <li>First_Doze: {{ empvax.first_doze }}</li>
+    <li>First_Doze_Date: {{ empvax.first_doze_date }}</li>
+    <li>Second_Doze: {{ empvax.second_doze }}</li>
+    <li>Second_Doze_Date: {{ empvax.second_doze_date }}</li>
+    </ul>
+    <br>
+{% endfor %}
+<button type="submit"><a href="/vaccination_drive/logout">Logout</a></button>
+{% if admin %}
+    <button type="submit"><a href="/vaccination_drive/allemployee">All Employee Details</a></button>
+    <button type="submit"><a href="/vaccination_drive/allvaccine">All Vaccine Details</a></button>
+{% endif %}
+{% endblock %} 

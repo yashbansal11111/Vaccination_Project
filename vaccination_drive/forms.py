@@ -62,7 +62,7 @@ class UserRegistrationForm(UserCreationForm):
     gender = forms.CharField(max_length=10)
     age = forms.IntegerField(validators=[MaxValueValidator(100),MinValueValidator(1)])
     contact_info = forms.IntegerField(validators=[MaxValueValidator(9999999999),MinValueValidator(1000000000)])
-    role = forms.CharField(max_length=20)
+    role = forms.CharField(max_length=20,initial='Employee',disabled=True)
     #password = forms.CharField(label=("Password"),widget=forms.PasswordInput)   
     #password1 = forms.CharField(label=("Password confirmation"),widget=forms.PasswordInput,
     #help_text=("Enter the same password as above, for verification."))    

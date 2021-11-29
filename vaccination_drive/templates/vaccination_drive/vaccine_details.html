@@ -15,6 +15,9 @@
     <br>
 
 {% endfor %}
-{{ vax_details }}
+{% if admin %}
+    <button type="submit"><a href="/vaccination_drive/emp_details/">All Employee Details</a></button>
+    <button type="submit"><a href="/vaccination_drive/vaccine_details/">All Vaccine Details</a></button>
+{% endif %}
 
 {% endblock %} 
