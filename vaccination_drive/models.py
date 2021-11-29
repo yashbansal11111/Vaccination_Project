@@ -34,7 +34,7 @@ class VaccinationDetails(models.Model):
     employee=models.OneToOneField(User, on_delete=models.CASCADE,related_name='e_id')
     vaccine_name=models.CharField(max_length=50,null=False, blank=False)
     first_doze = models.BooleanField()
-    first_doze_date=models.DateField(validators=[MaxValueValidator(limit_value=date.today)],blank=True,null=True)
+    first_doze_date=models.DateField(validators=[MaxValueValidator(limit_value=date.today)],null=True,blank=True)
     second_doze = models.BooleanField()
-    second_doze_date=models.DateField(validators=[MaxValueValidator(limit_value=date.today)],blank=True,null=True) 
+    second_doze_date=models.DateField(validators=[MaxValueValidator(limit_value=date.today)],null=True,blank=True) 
 #First dose date should not exceed second dose date

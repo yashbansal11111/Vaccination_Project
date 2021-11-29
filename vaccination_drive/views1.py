@@ -2,13 +2,11 @@ from django.http import HttpResponse
 from .forms import NewUserForm,VaccineAddForm,UserRegistrationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
 from django.contrib import messages
-from vaccination_drive.models import User, VaccinationDetails
+from vaccination_drive.models import User
 #OR from .models import UserDetails, VaccinationDetails because our models.py is in same directory as views.py
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.models import Permission
+
+
 
 def registerPage(request):
     if request.method == 'POST':

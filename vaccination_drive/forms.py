@@ -74,10 +74,10 @@ class UserRegistrationForm(UserCreationForm):
 #TESTING A VACCINE ADD INFO FORM:
 class AddVaccineForm(forms.ModelForm):
     vaccine_name=forms.CharField(max_length=50)
-    first_doze = forms.BooleanField()
-    first_doze_date=forms.DateField(validators=[MaxValueValidator(limit_value=date.today)])
-    second_doze = forms.BooleanField()
-    second_doze_date=forms.DateField(validators=[MaxValueValidator(limit_value=date.today)]) 
+    first_doze = forms.BooleanField(required=False)
+    first_doze_date=forms.DateField(validators=[MaxValueValidator(limit_value=date.today)],required=False)
+    second_doze = forms.BooleanField(required=False)
+    second_doze_date=forms.DateField(validators=[MaxValueValidator(limit_value=date.today)],required=False) 
     class Meta:
         model = VaccinationDetails
         fields = ["vaccine_name","first_doze","first_doze_date", "second_doze", "second_doze_date"]
