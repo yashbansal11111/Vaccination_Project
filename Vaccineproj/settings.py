@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'vaccination_drive.apps.VaccinationDriveConfig'
+    'vaccination_drive.apps.VaccinationDriveConfig',
+    'passgenerator.apps.PassgeneratorConfig',
 ]
 
 MIDDLEWARE = [
